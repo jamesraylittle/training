@@ -76,12 +76,20 @@ int main()
             cout << "Okay, want to keep going?" << endl;
             sleep(1);
             cin >> keepGoing;
-            while(std::cin.fail()) {
-            std::cin.clear();
-            cin.ignore(80, '\n');
-            cout << "Bad input. Please try again: ";
-            cin >> keepGoing;
+
+            //clearing the cin buffer, cin.ignore() is also avaliable.
+            cin.clear(); 
+            cin.sync();
+
+            while (std::cin.fail()) {
+                std::cin.clear();
+                cin.ignore(80, '\n');
+                cout << "Bad input. Please try again: ";
+                cin >> keepGoing;
             }
+            
+    
+
         }
     }
     else
